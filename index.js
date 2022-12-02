@@ -2,6 +2,7 @@ const output = document.getElementById('output');
 const textInput = document.getElementById('textInput');
 const backInput = document.getElementById('backInput');
 const foreInput = document.getElementById('foreInput');
+const saveInput = document.getElementById('saveInput');
 
 const cabio = (foreground, background) => {
     return `
@@ -34,14 +35,27 @@ const generate = e => {
         container: 'svg',
         ecl: 'H',
         padding: 2,
-        join: false
+        join: true
     });
 
     output.innerHTML = qrcode.svg();
-    output.getElementsByTagName('svg')[0]
-        .innerHTML += cabio(foreInput.value, backInput.value);
+    const svg = output.getElementsByTagName('svg')[0];
+    svg.innerHTML += cabio(foreInput.value, backInput.value);
+}
+
+/* https://stackoverflow.com/a/38019175 */
+const save = e => {
+    const svgBlob = new Blob([output.innerHTML], {type:'image/svg+xml;charset=utf-8'});
+    const svgURL = URL.createObjectURL(svgBlob);
+    const downloadLink = document.createElement("a");
+    downloadLink.href = svgURL;
+    downloadLink.download = "cabio.svg";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
 }
 
 textInput.oninput = generate;
 foreInput.oninput = generate;
 backInput.oninput = generate;
+saveInput.onclick = save;
