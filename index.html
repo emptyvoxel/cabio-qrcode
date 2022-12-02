@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Gerador de Códigos QR</title>
+</head>
+<body>
+    <div id="input">
+        <p>Conteúdo: <input type="text" id="textInput"></p>
+        <p>Frente: <input type="color" id="foreInput" value="#000000"></p>
+        <p>Fundo: <input type="color" id="backInput" value="#ffffff"></p>
+    </div>
+
+    <div id="output"></div>
+
+    <script src="qrcode.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
