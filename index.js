@@ -16,12 +16,12 @@ const corner = elementName => {
         });
 
         element.addEventListener('click', () => {
-            alert(elementName)
+            alert(elementName);
         });
     });
 };
 
-Vue.createApp({
+const app = Vue.createApp({
     data () {
         return {
             QRCode: null,
@@ -84,4 +84,7 @@ Vue.createApp({
         corner('dots');
         corner('squares');
     }
-}).mount('#app');
+});
+
+app.mount('#app');
+
