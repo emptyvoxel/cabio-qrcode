@@ -1,6 +1,8 @@
 const elementQueries = {
     dots: 'rect[clip-path^="url(\'#clip-path-corners-dot"',
-    squares: 'rect[clip-path^="url(\'#clip-path-corners-square"'
+    squares: 'rect[clip-path^="url(\'#clip-path-corners-square"',
+    modules: 'rect[clip-path="url(\'#clip-path-dot-color\')"]',
+    background: 'rect[clip-path="url(\'#clip-path-background-color\')"]'
 };
 
 const corner = elementName => {
@@ -16,7 +18,17 @@ const corner = elementName => {
         });
 
         element.addEventListener('click', () => {
-            alert(elementName);
+            const fieldset = document.querySelector(`fieldset#fieldset-${elementName}`);
+            
+            if (fieldset.classList.contains('active')) {
+                fieldset.classList.remove('active');
+                document.querySelector('fieldset#general').classList.add('active');
+            }
+            
+            else {
+                document.querySelector('fieldset.active').classList.remove('active');
+                fieldset.classList.add('active');
+            }
         });
     });
 };
@@ -75,6 +87,8 @@ const app = Vue.createApp({
             this.QRCode.update(this.configs());
             corner('dots');
             corner('squares');
+            corner('modules');
+            corner('background');
         }
     },
     mounted () {
@@ -83,6 +97,8 @@ const app = Vue.createApp({
 
         corner('dots');
         corner('squares');
+        corner('modules');
+        corner('background');
     }
 });
 

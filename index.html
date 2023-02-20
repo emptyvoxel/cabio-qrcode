@@ -11,66 +11,94 @@
 </head>
 <body>
     <div id="app">
-        <div class="in">
-            <div class="field">
-                <input type="text" v-model="data" @input="update" id="data" required>
-                <span class="label">Conteúdo</span>
+        <div class="center">
+            <div class="input data">
+                <div class="field">
+                    <input type="text" v-model="data" @input="update" id="data" required>
+                    <span class="label">Conteúdo</span>
+                </div>
             </div>
-        </div>
 
-        <div class="out">
-            <div id="output"></div>
-        </div>
+            <div class="input advanced">
+                <fieldset id="general" class="active">
+                    <div class="field">
+                        <input type="checkbox">
+                        <span class="label">Usar imagem</span>
+                    </div>
+                    <div class="field">
+                        <input type="checkbox">
+                        <span class="label">Cobrir fundo</span>
+                    </div>
+                    <div class="field">
+                        <input type="checkbox">
+                        <span class="label">Gerar automaticamente</span>
+                    </div>
+                </fieldset>
+                
+                <fieldset id="fieldset-squares">
+                    <div class="field">
+                        <span class="label">Cor</span>
+                        <input type="color" v-model="corners.square.color" @input="update">
+                    </div>
+                    
+                    <div class="field">
+                        <span class="label">Estilo</span>
+                        <input 
+                            type="radio" 
+                            v-model="corners.square.type" 
+                            @change="update"
+                            v-for="v in ['dot', 'square', 'extra-rounded']"
+                            :value="v">
+                    </div>
+                </fieldset>
+                
+                <fieldset id="fieldset-dots">
+                    <div class="field">
+                        <span class="label">Cor</span>
+                        <input type="color" v-model="corners.dot.color" @input="update">
+                    </div>
+                    
+                    <div class="field">
+                        <span class="label">Estilo</span>
+                        <input 
+                            type="radio" 
+                            v-model="corners.dot.type" 
+                            @change="update"
+                            v-for="v in ['dot', 'square']"
+                            :value="v">
+                    </div>
+                </fieldset>
+                
+                <fieldset id="fieldset-modules">
+                    <div class="field">
+                        <span class="label">Cor</span>
+                        <input type="color" v-model="modules.color" @input="update">
+                    </div>
+                    
+                    <div class="field">
+                        <span class="label">Estilo</span>
+                        <input 
+                            type="radio" 
+                            v-model="modules.type" 
+                            @change="update"
+                            v-for="v in ['rounded', 'dots', 'classy', 'classy-rounded', 'square', 'extra-rounded']" 
+                            :value="v">
+                    </div>
+                </fieldset>
+                
+                <fieldset id="fieldset-background">
+                    <div class="field">
+                        <span class="label">Cor</span>
+                        <input type="color" v-model="background.color" @input="update">
+                    </div>
+                </fieldset>
+            </div>
+    
+            <div class="out">
+                <div id="output"></div>
+            </div>
 
-        <div class="sidebar" id="square">
-            <div class="field">
-                <input type="color" id="foreground" v-model="corners.square.color" @input="update">
-            </div>
-            
-            <div class="field">
-                <input 
-                    type="radio" 
-                    v-model="corners.square.type" 
-                    @change="update" 
-                    v-for="v in ['dot', 'square', 'extra-rounded']"
-                    :value="v">
-            </div>
-        </div>
-
-        <div class="sidebar" id="dot">
-            <div class="field">
-                <input type="color" id="foreground" v-model="corners.dot.color" @input="update">
-            </div>
-            
-            <div class="field">
-                <input 
-                    type="radio" 
-                    v-model="corners.dot.type" 
-                    @change="update"
-                    v-for="v in ['dot', 'square']"
-                    :value="v">
-            </div>
-        </div>
-
-        <div class="sidebar" id="modules">
-            <div class="field">
-                <input type="color" id="foreground" v-model="modules.color" @input="update">
-            </div>
-            
-            <div class="field">
-                <input 
-                    type="radio" 
-                    v-model="modules.type" 
-                    @change="update"
-                    v-for="v in ['rounded', 'dots', 'classy', 'classy-rounded', 'square', 'extra-rounded']" 
-                    :value="v">
-            </div>
-        </div>
-
-        <div class="sidebar" id="background">
-            <div class="field">
-                <input type="color" id="foreground" v-model="background.color" @input="update">
-            </div>
+            <div class="input save"></div>
         </div>
     </div>
 
