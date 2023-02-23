@@ -4,11 +4,12 @@ import styled from '@emotion/styled';
 const Select: React.FC<{
     className?: string;
     options: string[];
-}> = ({ className, options }) => {
+    onChange (event: React.ChangeEvent<HTMLSelectElement>): any;
+}> = ({ className, options, onChange }) => {
     return (
-        <select className={className}>
+        <select className={className} onChange={onChange}>
             {options.map(item => (
-                <option value={item}>{item.toUpperCase()}</option>
+                <option value={item} key={item}>{item.toUpperCase()}</option>
             ))}
         </select>
     );
