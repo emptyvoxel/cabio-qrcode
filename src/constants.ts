@@ -1,8 +1,8 @@
 import { Options } from 'qr-code-styling';
 
 export const OPTIONS: Options = {
-    width: 450,
-    height: 450,
+    width: 500,
+    height: 500,
     type: 'svg',
     data: 'https://emptyvoxel.github.io/',
     image: '',
@@ -12,18 +12,18 @@ export const OPTIONS: Options = {
         imageSize: .4
     },
     dotsOptions: {
-        color: '#000',
+        color: '#000000',
         type: 'square'
     },
     backgroundOptions: {
-        color: '#fff'
+        color: '#ffffff'
     },
     cornersDotOptions: {
-        color: '#000',
+        color: '#000000',
         type: 'square'
     },
     cornersSquareOptions: {
-        color: '#000',
+        color: '#000000',
         type: 'square'
     }
 };

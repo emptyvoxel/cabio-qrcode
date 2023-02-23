@@ -1,6 +1,7 @@
 import React from 'react';
-import Select from './Select';
 import QRCodeStyling, { FileExtension } from 'qr-code-styling';
+
+const OPTIONS = ['svg', 'jpeg', 'png', 'webp'];
 
 const Download: React.FC<{
     QRCode: QRCodeStyling
@@ -13,7 +14,11 @@ const Download: React.FC<{
     return (
         <>
             <input type="button" value="Download" onClick={onClick}/>
-            <Select options={['svg', 'png', 'jpeg', 'webp']} onChange={onChange}/>
+            <select onChange={onChange}>
+                {OPTIONS.map(item => (
+                    <option value={item} key={item}>{item.toUpperCase()}</option>
+                ))}
+            </select>
         </>
     );
 }
