@@ -20,11 +20,12 @@ const Wrapper = styled.div`
 `;
 
 const App: React.FC = () => {
-    const ref = React.useRef<HTMLDivElement>(null);
     const [options, setOptions] = React.useState<Options>(OPTIONS);
-    const colorProps = {options, setOptions};
     const [QRCode] = React.useState<QRCodeStyling>(new QRCodeStyling(options));
+    const colorProps = {options, setOptions};
+
     const [fieldset, setFieldset] = React.useState<number>(0);
+    const ref = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
         if (ref.current) QRCode.append(ref.current);
@@ -40,10 +41,6 @@ const App: React.FC = () => {
             ...opt,
             data: event.target.value
         }));
-    }
-
-    const colorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-
     }
 
     return (
@@ -63,17 +60,26 @@ const App: React.FC = () => {
                       ), (
                         <Fieldset key="squares">
                             <Color {...colorProps} dataKey="cornersSquareOptions"/>
-                            <Select options={['dot', 'square', 'extra-rounded']}/>
+                            <Select {...colorProps}
+                                dataKey="cornersSquareOptions"
+                                opts={['dot', 'square', 'extra-rounded']}
+                            />
                         </Fieldset>
                       ), (
                         <Fieldset key="dots">
                             <Color {...colorProps} dataKey="cornersDotOptions"/>
-                            <Select options={['dot', 'square']}/>
+                            <Select {...colorProps}
+                                dataKey="cornersDotOptions"
+                                opts={['dot', 'square']}
+                            />
                         </Fieldset>
                       ), (
                         <Fieldset key="modules">
                             <Color {...colorProps} dataKey="dotsOptions"/>
-                            <Select options={['rounded', 'dots', 'classy', 'classy-rounded', 'square', 'extra-rounded']}/>
+                            <Select {...colorProps}
+                                dataKey="dotsOptions"
+                                opts={['rounded', 'dots', 'classy', 'classy-rounded', 'square', 'extra-rounded']}
+                            />
                         </Fieldset>
                       ), (
                         <Fieldset key="background">
