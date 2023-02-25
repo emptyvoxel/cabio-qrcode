@@ -1,8 +1,8 @@
 import { Options } from 'qr-code-styling';
 
 export const OPTIONS: Options = {
-    width: 500,
-    height: 500,
+    width: window.innerWidth + 350 > window.innerHeight ? window.innerHeight - 350 : window.innerWidth,
+    height: window.innerWidth + 350 > window.innerHeight ? window.innerHeight - 350 : window.innerWidth,
     type: 'svg',
     data: 'https://emptyvoxel.github.io/',
     image: '',

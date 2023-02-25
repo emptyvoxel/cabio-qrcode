@@ -16,14 +16,22 @@ import Select from './components/input/Select';
 
 const Wrapper = styled.div`
     display: grid;
-    grid-template-rows: 100px 100px 1fr 100px;
+    grid-template-rows: 100px 100px 1fr 150px;
     height: 100%;
     margin: 0 auto;
     width: fit-content;
     overflow: hidden;
+
+    .input {
+        align-self: center;
+    }
 `;
 
 const App: React.FC = () => {
+    const [settings, setSettings] = React.useState<any>({
+        useImage: false,
+        autoGenerate: true
+    });
     const [options, setOptions] = React.useState<Options>(OPTIONS);
     const [QRCode] = React.useState<QRCodeStyling>(new QRCodeStyling(options));
     const colorProps = {options, setOptions};
@@ -34,15 +42,12 @@ const App: React.FC = () => {
     React.useEffect(() => {
         const listener = () => {
             const d = { width: window.innerWidth, height: window.innerWidth };
-            if (window.innerWidth + 300 > window.innerHeight) {
-                d.width = window.innerHeight - 300;
-                d.height = window.innerHeight - 300;
+            if (window.innerWidth + 350 > window.innerHeight) {
+                d.width = window.innerHeight - 350;
+                d.height = window.innerHeight - 350;
             }
 
-            setOptions({
-                ...options,
-                ...d
-            });
+            setOptions({ ...options, ...d });
         }
 
         window.addEventListener('resize', listener);
@@ -62,10 +67,14 @@ const App: React.FC = () => {
     }, [QRCode, options]);
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setOptions(opt => ({
-            ...opt,
-            data: event.target.value
-        }));
+        setOptions(opt => ({ ...opt, data: event.target.value }));
+    }
+
+    const onSwitch = (opt: string) => {
+        setSettings({
+            ...settings,
+            [opt]: !settings[opt]
+        });
     }
 
     return (
@@ -78,8 +87,16 @@ const App: React.FC = () => {
                 <AnimatePresence>
                     {[(
                         <Fieldset key="general">
-                            <Switch>Usar imagem</Switch>
-                            <Switch>Gerar automaticamente</Switch>
+                            <Switch
+                                onClick={() => onSwitch('useImage')}
+                                active={settings.useImage}
+                                children="Usar imagem"
+                            />
+                            <Switch
+                                onClick={() => onSwitch('autoGenerate')}
+                                active={settings.autoGenerate}
+                                children="Gerar automaticamente"
+                            />
                         </Fieldset>
                       ), (
                         <Fieldset key="squares">

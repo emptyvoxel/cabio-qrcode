@@ -32,28 +32,31 @@ const Download: React.FC<{
 
 export default styled(Download)`
     display: grid;
-    grid-template-columns: 110px 70px;
-    height: 2.5rem;
-    width: 180px;
+    grid-template-columns: 120px 80px;
+    height: 3rem;
+    width: 200px;
     margin: 0 auto;
+    border-radius: 2rem;
+    background: linear-gradient(to right, #0cebeb, #29ffc6);
 
     input[type=button] {
         width: 100%;
         height: 100%;
         border: none;
         border-radius: 2rem 0 0 2rem;
-        background-color: #00d8d6;
         outline: none;
         cursor: pointer;
+        background: transparent;
     }
 
     select {
         height: 100%;
         border: none;
         border-left: 1.5px solid #44444422;
-        background-color: #00d8d6;
         outline: none;
         border-radius: 0 2rem 2rem 0;
         cursor: pointer;
+        text-align: center;
+        background: transparent;
     }
 `;
