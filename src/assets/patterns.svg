@@ -27,9 +27,9 @@
         <path d="M29,59V83a30,30,0,0,0,30,30H83a30,30,0,0,0,30-30V59A30,30,0,0,0,83,29H59A30,30,0,0,0,29,59M59,41H83a18,18,0,0,1,18,18V83a18,18,0,0,1-18,18H59A18,18,0,0,1,41,83V59A18,18,0,0,1,59,41" transform="translate(-29 -29)"/>
     </symbol>
     <symbol id="cornersDotOptions-square" viewBox="0 0 84 84">
-        <rect width="84" height="84"/>
+        <rect x="10" y="10" width="64" height="64"/>
     </symbol>
     <symbol id="cornersDotOptions-dot" viewBox="0 0 84 84">
-        <circle cx="42" cy="42" r="42"/>
+        <circle cx="42" cy="42" r="34"/>
     </symbol>
 </svg>
