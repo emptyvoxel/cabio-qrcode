@@ -17,6 +17,10 @@ import Select from './components/input/Select';
 const Wrapper = styled.div`
     display: grid;
     grid-template-rows: 100px 100px 1fr 100px;
+    height: 100%;
+    margin: 0 auto;
+    width: fit-content;
+    overflow: hidden;
 `;
 
 const App: React.FC = () => {
@@ -26,6 +30,27 @@ const App: React.FC = () => {
 
     const [fieldset, setFieldset] = React.useState<number>(0);
     const ref = React.useRef<HTMLDivElement>(null);
+
+    React.useEffect(() => {
+        const listener = () => {
+            const d = { width: window.innerWidth, height: window.innerWidth };
+            if (window.innerWidth + 300 > window.innerHeight) {
+                d.width = window.innerHeight - 300;
+                d.height = window.innerHeight - 300;
+            }
+
+            setOptions({
+                ...options,
+                ...d
+            });
+        }
+
+        window.addEventListener('resize', listener);
+
+        return () => {
+            window.removeEventListener('resize', listener);
+        }
+    }, [options, setOptions]);
 
     React.useEffect(() => {
         if (ref.current) QRCode.append(ref.current);
@@ -54,7 +79,6 @@ const App: React.FC = () => {
                     {[(
                         <Fieldset key="general">
                             <Switch>Usar imagem</Switch>
-                            <Switch>Cobrir fundo</Switch>
                             <Switch>Gerar automaticamente</Switch>
                         </Fieldset>
                       ), (

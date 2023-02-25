@@ -44,7 +44,7 @@ export default styled(Select)`
         margin: 0 5px;
 
         &.active svg {
-            fill: #f0f;
+            fill: #00d8d6;
         }
     }
 `;
