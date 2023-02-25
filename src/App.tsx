@@ -20,6 +20,7 @@ const Wrapper = styled.div`
     height: 100%;
     margin: 0 auto;
     width: fit-content;
+    min-width: ${OPTIONS.width}px;
     overflow: hidden;
 
     .input {

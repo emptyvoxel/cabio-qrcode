@@ -25,6 +25,7 @@ const Switch: React.FC<{
 export default styled(Switch)`
     display: flex;
     align-items: center;
+    margin: 5px 0;
 
     span {
         margin: 0 10px;
@@ -32,10 +33,10 @@ export default styled(Switch)`
 
     .switch {
         cursor: pointer;
-        width: 2.5rem;
-        height: 1.3rem;
-        background: linear-gradient(to right, #0cebeb, #29ffc6);;
-        border-radius: 1.3rem;
+        width: 2.7rem;
+        height: 1.4rem;
+        background: linear-gradient(to right, #0cebeb, #29ffc6);
+        border-radius: 2rem;
         display: flex;
         align-items: center;
 
@@ -52,7 +53,7 @@ export default styled(Switch)`
             width: 1rem;
             border-radius: 50%;
             background-color: #fffd;
-            margin: 0 .15rem;
+            margin: 0 .2rem;
         }
     }
 `;
