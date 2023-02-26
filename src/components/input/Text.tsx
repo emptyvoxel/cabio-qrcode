@@ -18,26 +18,29 @@ const Text: React.FC<{
 
 export default styled(Text)`
     position: relative;
+    top: calc(50% - 1rem);
     height: 2rem;
+    border-radius: 2rem;
 
     input[type=text] {
         position: absolute;
         outline: none;
         border: none;
-        width: calc(100% - 12px);
+        width: calc(100% - 18px);
         height: calc(100% - 2px);
         background-color: #fff;
         z-index: 1;
         left: 1px;
         top: 1px;
         font-size: 1.1rem;
-        padding: 0 5px;
+        padding: 0 8px;
+        border-radius: 2rem;
 
         + .label {
             position: absolute;
             z-index: 2;
             top: .3rem;
-            left: .5rem;
+            left: .8rem;
             color: #333;
             pointer-events: none;
             transition: .25s ease-out all;
@@ -47,6 +50,7 @@ export default styled(Text)`
         &:not(:focus):valid + .label {
             font-size: .6rem;
             top: -.4rem;
+            left: .9rem;
             background-color: #ffffff;
             padding: 0 5px;
 
@@ -68,5 +72,6 @@ export default styled(Text)`
         top: 0;
         z-index: 0;
         transition: 1s ease-out all;
+        border-radius: 2rem;
     }
 `;

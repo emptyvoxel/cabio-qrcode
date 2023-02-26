@@ -24,7 +24,7 @@ const Wrapper = styled.div`
     overflow: hidden;
 
     .input {
-        align-self: center;
+        height: 100%;
     }
 `;
 

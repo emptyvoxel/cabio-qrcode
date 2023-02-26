@@ -25,6 +25,7 @@ const Select: React.FC<{
         <div className={className}>
             {opts.map(opt => (
                 <div
+                    key={opt}
                     title={opt}
                     onClick={() => onClick(opt)} className={isActive(opt) ? 'active' : ''}>
                     <Icon>{`${dataKey}-${opt}`}</Icon>
@@ -38,13 +39,21 @@ export default styled(Select)`
     display: flex;
     align-items: center;
 
+    span {
+        margin-right: .5rem;
+    }
+
     > div {
         cursor: pointer;
         display: flex;
         margin: 0 5px;
 
         &.active svg {
-            fill: #00d8d6;
+            fill: url(#linear-gradient);
+        }
+
+        &:hover {
+            filter: brightness(.7);
         }
     }
 `;
